@@ -1,23 +1,54 @@
-import { useState } from 'react'
-import PetCard from '../components/PetCard.jsx'
-import { initialPets } from '../data/pets.js'
-
+import { useEffect, useState } from "react";
+import PetCard from "../components/PetCard.jsx";
+import { listPets, updatePetStatus, deletePet } from "../lib/dynamo.js";
 
 export default function Pets() {
-const [pets, setPets] = useState(initialPets)
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  async function load() {
+    setLoading(true);
+    try {
+      const data = await listPets();
+      setPets(data);
+    } catch (err) {
+      console.error("Error fetching pets:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
-function toggleAdopted(id) {
-setPets(prev => prev.map(p => p.id === id ? { ...p, status: p.status === 'available' ? 'adopted' : 'available' } : p))
+  async function toggleAdopted(id, currentStatus) {
+    const newStatus = currentStatus === "available" ? "adopted" : "available";
+    await updatePetStatus(id, newStatus);
+    load();
+  }
+
+  async function handleDelete(id) {
+    await deletePet(id);
+    load();
+  }
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  if (loading) return <p>Loading pets…</p>;
+
+  return (
+    <section>
+      <h2>All Pets</h2>
+      <div className="grid">
+        {pets.map((p) => (
+          <PetCard
+            key={p.id}
+            pet={p}
+            onToggle={() => toggleAdopted(p.id, p.status)}
+            onDelete={() => handleDelete(p.id)}
+          />
+        ))}
+      </div>
+    </section>
+  );
 }
-return (
-<section>
-<h2>All Pets</h2>
-<div className="grid">
-{pets.map(p => (
-<PetCard key={p.id} pet={p} onToggle={() => toggleAdopted(p.id)} />
-))}
-</div>
-</section>
-)
-}
+
