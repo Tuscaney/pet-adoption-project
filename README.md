@@ -8,26 +8,17 @@ A simple React app to manage a list of adoptable pets. MVP supports listing, add
 ```bash
 npm install
 npm run dev
-Scripts
 
-dev — start Vite dev server
+## Scripts
 
-build — production build
+- dev — start Vite dev server
+- build — production build
+- preview — preview production build
 
-preview — preview production build
+## DynamoDB
 
-DynamoDB
+- Table: PetAdoptionPets
+- Region: <YOUR-REGION>
+- Keys: id (PK string)
 
-Table: PetAdoptionPets
 
-Region: <YOUR-REGION>
-
-Keys: id (PK string)
-
-Next Steps (optional)
-
-Add backend (API Gateway + Lambda) to persist to DynamoDB
-
-Replace local state with API calls
-
-Add filtering and search EOF
