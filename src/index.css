@@ -1,11 +1,65 @@
-:root { font-family: system-ui, Arial, sans-serif; }
-.container { max-width: 960px; margin: 0 auto; padding: 1rem; }
-.header { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-.header nav a { margin-right: .75rem; }
-.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-.card { border: 1px solid #ddd; padding: 1rem; border-radius: .75rem; }
-.form { display:grid; gap:.75rem; max-width: 360px; }
-.form input, .form select { width:100%; padding:.5rem; }
-button { padding: .5rem .75rem; cursor:pointer; }
-.notice { margin-top: .75rem; }
-.footer { margin-top: 2rem; font-size: .9rem; color: #555; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  font-family: system-ui, Arial, sans-serif;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header nav a {
+  margin-right: 0.75rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 360px;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.notice {
+  margin-top: 0.75rem;
+}
+
+.footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
