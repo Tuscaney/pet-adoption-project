@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div className="site">
       <header>
-        <h1>🐾 Pet Adoption</h1>
+        <h1>Pet Adoption</h1>
         <nav>
           <NavLink to="/" end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
             Home
