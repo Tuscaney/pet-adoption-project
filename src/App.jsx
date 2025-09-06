@@ -9,7 +9,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <header className="bg-white shadow-sm">
         <div className="container flex items-center justify-between py-4">
-          <h1 className="text-2xl font-bold">🐾 Pet Adoption</h1>
+          <h1 className="text-2xl font-bold">Pet Adoption</h1>
           <nav className="flex gap-4 items-center">
             <Link className="text-slate-600 hover:text-slate-900" to="/">Home</Link>
             <Link className="text-slate-600 hover:text-slate-900" to="/pets">Pets</Link>
