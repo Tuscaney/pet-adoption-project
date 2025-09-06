@@ -1,4 +1,4 @@
-import { Link, Routes, Route } from 'react-router-dom';
+import { NavLink, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Pets from './pages/Pets.jsx';
 import AddPet from './pages/AddPet.jsx';
@@ -11,24 +11,37 @@ export default function App() {
       <header className="bg-white shadow-md py-4 px-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-blue-600">🐾 Pet Adoption</h1>
         <nav className="space-x-4">
-          <Link
+          <NavLink
             to="/"
-            className="text-gray-700 hover:text-blue-600 transition-colors"
+            end
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-600 transition-colors"
+            }
           >
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/pets"
-            className="text-gray-700 hover:text-blue-600 transition-colors"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-600 transition-colors"
+            }
           >
             Pets
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/add"
-            className="text-gray-700 hover:text-blue-600 transition-colors"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-600 font-semibold"
+                : "text-gray-700 hover:text-blue-600 transition-colors"
+            }
           >
             Add Pet
-          </Link>
+          </NavLink>
         </nav>
       </header>
 
@@ -49,4 +62,5 @@ export default function App() {
     </div>
   );
 }
+
 
