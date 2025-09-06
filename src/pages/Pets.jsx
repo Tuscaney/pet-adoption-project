@@ -33,12 +33,26 @@ export default function Pets() {
     load();
   }, []);
 
-  if (loading) return <p>Loading pets…</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <p className="text-gray-700 text-lg animate-pulse">Loading pets…</p>
+      </div>
+    );
+  }
+
+  if (pets.length === 0) {
+    return (
+      <div className="text-center text-gray-500 mt-8">
+        <p>No pets found. Add some pets to get started!</p>
+      </div>
+    );
+  }
 
   return (
-    <section>
-      <h2>All Pets</h2>
-      <div className="grid">
+    <section className="p-4">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4">All Pets</h2>
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {pets.map((p) => (
           <PetCard
             key={p.id}
@@ -51,4 +65,5 @@ export default function Pets() {
     </section>
   );
 }
+
 
