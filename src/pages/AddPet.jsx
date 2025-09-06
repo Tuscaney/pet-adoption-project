@@ -28,10 +28,9 @@ export default function AddPet() {
   }
 
   return (
-    <section className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md mt-6">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Add a Pet</h2>
-
-      <form className="grid gap-4" onSubmit={handleSubmit}>
+    <section className="max-w-lg mx-auto mt-6 p-6 bg-white rounded-md shadow-sm">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-800">Add a Pet</h2>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <label className="flex flex-col text-gray-700">
           Name
           <input
@@ -39,7 +38,7 @@ export default function AddPet() {
             value={form.name}
             onChange={handleChange}
             required
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </label>
 
@@ -52,7 +51,7 @@ export default function AddPet() {
             value={form.age}
             onChange={handleChange}
             required
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </label>
 
@@ -62,7 +61,7 @@ export default function AddPet() {
             name="status"
             value={form.status}
             onChange={handleChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option value="available">available</option>
             <option value="adopted">adopted</option>
@@ -72,7 +71,7 @@ export default function AddPet() {
         <button
           type="submit"
           disabled={!form.name || form.age === ""}
-          className={`py-2 px-4 rounded-md text-white font-semibold transition-colors ${
+          className={`py-2 px-4 rounded text-white font-semibold transition-colors ${
             !form.name || form.age === ""
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-blue-600 hover:bg-blue-700"
@@ -90,5 +89,7 @@ export default function AddPet() {
     </section>
   );
 }
+
+
 
 
