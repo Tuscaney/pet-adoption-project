@@ -1,0 +1,82 @@
+// Variables
+$primary-color: #2563eb; // blue
+$secondary-color: #10b981; // green
+$danger-color: #ef4444; // red
+$gray-bg: #f9fafb;
+
+// Global reset-ish
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: $gray-bg;
+  color: #333;
+}
+
+// Header
+header {
+  background: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+  nav a {
+    margin-left: 1rem;
+    color: #555;
+    text-decoration: none;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+// Grid for pets
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+// Card
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+  h3 {
+    margin: 0 0 0.5rem;
+    color: $primary-color;
+  }
+}
+
+// Form
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 360px;
+
+  input, select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+  }
+
+  button {
+    background: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+    &.danger {
+      background: $danger-color;
+    }
+  }
+}
