@@ -1,24 +1,28 @@
-import { Link, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Pets from './pages/Pets'
-import AddPet from './pages/AddPet'
-import NotFound from './pages/NotFound'
+import { NavLink, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Pets from './pages/Pets.jsx';
+import AddPet from './pages/AddPet.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="bg-white shadow-sm">
-        <div className="container flex items-center justify-between py-4">
-          <h1 className="text-2xl font-bold">Pet Adoption</h1>
-          <nav className="flex gap-4 items-center">
-            <Link className="text-slate-600 hover:text-slate-900" to="/">Home</Link>
-            <Link className="text-slate-600 hover:text-slate-900" to="/pets">Pets</Link>
-            <Link className="text-slate-600 hover:text-slate-900" to="/add">Add Pet</Link>
-          </nav>
-        </div>
+    <div className="site">
+      <header>
+        <h1>🐾 Pet Adoption</h1>
+        <nav>
+          <NavLink to="/" end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+            Home
+          </NavLink>
+          <NavLink to="/pets" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+            Pets
+          </NavLink>
+          <NavLink to="/add" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+            Add Pet
+          </NavLink>
+        </nav>
       </header>
 
-      <main className="container flex-1 py-6">
+      <main className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pets" element={<Pets />} />
@@ -27,12 +31,8 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="bg-white">
-        <div className="container py-4 text-sm text-slate-500">© {new Date().getFullYear()} Pet Adoption</div>
-      </footer>
+      <footer className="footer">© {new Date().getFullYear()} Pet Adoption</footer>
     </div>
-  )
+  );
 }
-
-
 
