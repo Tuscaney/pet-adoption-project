@@ -1,3 +1,4 @@
+// src/pages/AddPet.jsx
 import { useState } from "react";
 import { addPet } from "../lib/dynamo.js";
 
@@ -12,25 +13,26 @@ export default function AddPet() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const newPet = {
+    const payload = {
       id: Date.now().toString(36),
       name: form.name.trim(),
       age: Number(form.age),
       status: form.status,
     };
+
     try {
-      await addPet(newPet);
-      setAdded(newPet);
-      setForm({ name: "", age: "", status: "available" });
+      await addPet(payload);
+      setAdded(payload);
     } catch (err) {
       console.error("Error adding pet:", err);
     }
+
+    setForm({ name: "", age: "", status: "available" });
   }
 
   return (
     <section className="container">
       <h2>Add a Pet</h2>
-
       <div className="card form-card">
         <form className="form" onSubmit={handleSubmit}>
           <label>
@@ -75,18 +77,14 @@ export default function AddPet() {
             Add Pet
           </button>
         </form>
-
-        {added && (
-          <p className="notice">
-            Added: {added.name} ({added.age}) — {added.status}
-          </p>
-        )}
       </div>
+
+      {added && (
+        <p className="notice">
+          Added: {added.name} ({added.age}) — {added.status}
+        </p>
+      )}
     </section>
   );
 }
-
-
-
-
 
